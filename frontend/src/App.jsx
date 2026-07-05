@@ -4,7 +4,16 @@ import ProjectCustomizer from './components/ProjectCustomizer';
 import FilePreviewer from './components/FilePreviewer';
 import HistoryList from './components/HistoryList';
 
-const API_BASE = 'http://localhost:8080/api/projects';
+const getApiBase = () => {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    if (window.location.port === '5173') {
+      return 'http://localhost:8080/api/projects';
+    }
+  }
+  return import.meta.env.VITE_API_BASE_URL || '/api/projects';
+};
+
+const API_BASE = getApiBase();
 
 export default function App() {
   const [view, setView] = useState('prompt'); // 'prompt', 'customizer', 'preview'

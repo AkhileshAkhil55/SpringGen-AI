@@ -1,0 +1,28 @@
+# IDE / Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+
+# Build directories
+backend/target/
+frontend/dist/
+frontend/dist-ssr/
+
+# Dependency directories
+frontend/node_modules/
+
+# Local databases & runtimes
+mysql-data/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
