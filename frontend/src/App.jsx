@@ -11,7 +11,7 @@ const getApiBase = () => {
     }
   }
   if (window.location.hostname.endsWith('github.io')) {
-    return 'https://springgen-ai-akhilesh.loca.lt/api/projects';
+    return 'https://tiny-mayfly-7.loca.lt/api/projects';
   }
   return import.meta.env.VITE_API_BASE_URL || '/api/projects';
 };
