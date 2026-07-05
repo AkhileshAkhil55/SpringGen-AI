@@ -10,6 +10,9 @@ const getApiBase = () => {
       return 'http://localhost:8080/api/projects';
     }
   }
+  if (window.location.hostname.endsWith('github.io')) {
+    return 'http://localhost:8080/api/projects';
+  }
   return import.meta.env.VITE_API_BASE_URL || '/api/projects';
 };
 
