@@ -18,6 +18,17 @@ const getApiBase = () => {
 
 const API_BASE = getApiBase();
 
+const securedFetch = (url, options = {}) => {
+  const headers = options.headers || {};
+  return fetch(url, {
+    ...options,
+    headers: {
+      ...headers,
+      'Bypass-Tunnel-Reminder': 'true'
+    }
+  });
+};
+
 export default function App() {
   const [view, setView] = useState('prompt'); // 'prompt', 'customizer', 'preview'
   const [prompt, setPrompt] = useState('');
@@ -39,7 +50,7 @@ export default function App() {
   const loadHistory = async () => {
     setIsHistoryLoading(true);
     try {
-      const response = await fetch(`${API_BASE}/history`);
+      const response = await securedFetch(`${API_BASE}/history`);
       if (response.ok) {
         const data = await response.json();
         setHistory(data);
@@ -55,7 +66,7 @@ export default function App() {
     setIsLoading(true);
     setPrompt(userPrompt);
     try {
-      const response = await fetch(`${API_BASE}/analyze`, {
+      const response = await securedFetch(`${API_BASE}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: userPrompt })
@@ -78,7 +89,7 @@ export default function App() {
   const handlePreview = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE}/preview`, {
+      const response = await securedFetch(`${API_BASE}/preview`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(metadata)
@@ -101,7 +112,7 @@ export default function App() {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const response = await fetch(`${API_BASE}/download`, {
+      const response = await securedFetch(`${API_BASE}/download`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -135,7 +146,7 @@ export default function App() {
 
   const handleDownloadHistory = async (id, projectName) => {
     try {
-      const response = await fetch(`${API_BASE}/history/${id}/download`);
+      const response = await securedFetch(`${API_BASE}/history/${id}/download`);
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -155,7 +166,7 @@ export default function App() {
 
   const handleDeleteHistory = async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/history/${id}`, {
+      const response = await securedFetch(`${API_BASE}/history/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {

@@ -31,7 +31,7 @@ public class PrivateNetworkFilter implements Filter {
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
             response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            response.setHeader("Access-Control-Allow-Headers", "Authorization, Cache-Control, Content-Type, Access-Control-Request-Private-Network");
+            response.setHeader("Access-Control-Allow-Headers", "Authorization, Cache-Control, Content-Type, Access-Control-Request-Private-Network, Bypass-Tunnel-Reminder");
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setStatus(HttpServletResponse.SC_OK);
             return;
