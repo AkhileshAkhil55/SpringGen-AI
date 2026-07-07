@@ -6,9 +6,7 @@ import HistoryList from './components/HistoryList';
 
 const getApiBase = () => {
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    if (window.location.port === '5173') {
-      return 'http://localhost:8080/api/projects';
-    }
+    return 'http://localhost:8080/api/projects';
   }
   if (window.location.hostname.endsWith('github.io')) {
     return 'https://tiny-mayfly-7.loca.lt/api/projects';
