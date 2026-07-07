@@ -1,5 +1,5 @@
 # SpringGen AI 🚀 - Spring Boot Code Generator
-demo : (https://springgen-ai.onrender.com/)
+live Demo: https://springgen-ai.onrender.com
 
 SpringGen AI is an AI-powered code generation application that creates a fully-configured Spring Boot project structure (packaged in a downloadable ZIP file) based on a simple natural language prompt. 
 
